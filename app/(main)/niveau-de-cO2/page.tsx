@@ -1,11 +1,11 @@
 import NavBar from "@/components/NavBar";
-import Temperature from "@/components/statistic/Temperature";
+import NiveauCo2 from "@/components/statistic/NiveauCo2";
 
 export default function Home() {
    return (
       <main className="p-2">
          <NavBar />
-         <Temperature />
+         <NiveauCo2 />
       </main>
    );
 }

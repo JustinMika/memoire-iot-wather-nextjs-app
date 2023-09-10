@@ -18,7 +18,7 @@ interface DataItem {
    Pluie: number;
 }
 
-const Temperature = () => {
+const Sol = () => {
    const [data, setData] = useState<DataItem[]>([
       { Heure: "0h", Temperature: 32.5, Pluie: 9.8 },
       { Heure: "1h", Temperature: 23.1, Pluie: 15.2 },
@@ -54,22 +54,22 @@ const Temperature = () => {
       const generateNewData = () => {
          const newData = data.map((item) => ({
             ...item,
-            Temperature: parseFloat(getRandomFloat(5, 80)),
+            Temperature: parseFloat(getRandomFloat(8, 40)),
             Pluie: parseFloat(getRandomFloat(0, 20)),
          }));
          setData(newData);
       };
 
-      const intervalId = setInterval(generateNewData, 10000); // Toutes les 10 secondes
+      const intervalId = setInterval(generateNewData, 20000); // Toutes les 20 secondes
 
       return () => clearInterval(intervalId);
    }, [data]);
 
    return (
-      <div className="bg-white shadow-md w-full h-fit p-2 rounded-sm space-y-3">
-         <div className="my-1 text-center uppercase text-gray-500 border-b border-gray-200 pb-3">
-            Temperature ambiante et pluie
-         </div>
+      <div className="bg-white shadow-md w-full h-[70vh] p-2 rounded-sm space-y-3">
+         <span className="my-2 text-center uppercase text-gray-500">
+            Qualite du sol
+         </span>
          <ResponsiveContainer width="100%" height="100%">
             <AreaChart
                width={730}
@@ -110,5 +110,5 @@ const Temperature = () => {
    );
 };
 
-export default Temperature;
+export default Sol;
 
