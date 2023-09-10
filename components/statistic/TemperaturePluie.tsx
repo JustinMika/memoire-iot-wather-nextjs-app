@@ -68,7 +68,7 @@ const TemperaturePluie = () => {
    return (
       <div className="bg-white shadow-md w-full h-[70vh] p-2 rounded-sm space-y-3">
          <span className="my-2 text-center uppercase text-gray-500">
-            Temperature ambiante et pluie
+            Temperature Ambiante & Pluie
          </span>
          <ResponsiveContainer width="100%" height="100%">
             <AreaChart

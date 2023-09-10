@@ -1,4 +1,3 @@
-import LoadingSkeleton from "@/components/LoadingSkeleton";
 import SideBar from "@/components/SideBar";
 import { Suspense } from "react";
 

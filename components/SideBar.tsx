@@ -9,8 +9,9 @@ import {
    CloudCog,
    CloudRainWind,
    CloudMoonRain,
-   Fan
+   Fan,
 } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const SideBar = () => {
@@ -106,86 +107,86 @@ const SideBar = () => {
             <div className="h-full px-3 pb-4 overflow-y-auto bg-slate-20 dark:bg-gray-800 text-white">
                <ul className="space-y-2 font-medium">
                   <li>
-                     <a
+                     <Link
                         href={`/`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <LayoutDashboard />
                         <span className="ml-3">Dashboard</span>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a
+                     <Link
                         href={`/temperature`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <ThermometerSun />
                         <span className="ml-3">Temperature</span>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a
+                     <Link
                         href={`/vent`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Wind />
                         <span className="ml-3">Vitesse du vent</span>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a
+                     <Link
                         href={`/direction-vent`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Fan />
                         <span className="ml-3">Direction du vent</span>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a
+                     <Link
                         href={`/sol`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Flower2 />
                         <span className="ml-3">Humidité du sol</span>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a
+                     <Link
                         href={`/precipitation`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudRainWind />
                         <span className="ml-3">Précipitation</span>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a
+                     <Link
                         href={`/pluie`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudMoonRain />
                         <span className="ml-3">Pluie</span>
-                     </a>
+                     </Link>
                   </li>
                   <li>
-                     <a
+                     <Link
                         href={`/niveau-de-cO2`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudCog />
                         <span className="ml-3">Niveau de CO2</span>
-                     </a>
+                     </Link>
                   </li>
                   <hr className="bg-white border border-1 border-white" />
                   <li>
-                     <a
+                     <Link
                         href={`/Settings`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Settings />
                         <span className="ml-3">Settings</span>
-                     </a>
+                     </Link>
                   </li>
                </ul>
             </div>

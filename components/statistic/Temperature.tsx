@@ -68,14 +68,14 @@ const Temperature = () => {
    return (
       <div className="bg-white shadow-md w-full h-[70vh] p-2 rounded-sm space-y-3">
          <span className="my-2 text-center uppercase text-gray-500">
-            Temperature ambiante
+            Temperature
          </span>
          <ResponsiveContainer width="100%" height="100%">
             <AreaChart
                width={730}
                height={250}
                data={data}
-               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+               margin={{ top: 5, right: 30, left: 0, bottom: 0 }}
             >
                <defs>
                   <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
