@@ -116,7 +116,7 @@ const SideBar = () => {
                   </li>
                   <li>
                      <a
-                        href={`/Temperature`}
+                        href={`/temperature`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <ThermometerSun />
@@ -134,7 +134,7 @@ const SideBar = () => {
                   </li>
                   <li>
                      <a
-                        href={`/vent`}
+                        href={`/direction-vent`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Fan />
@@ -152,7 +152,7 @@ const SideBar = () => {
                   </li>
                   <li>
                      <a
-                        href={`/Niveau-de-CO2`}
+                        href={`/precipitation`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudRainWind />
@@ -161,7 +161,7 @@ const SideBar = () => {
                   </li>
                   <li>
                      <a
-                        href={`/Niveau-de-CO2`}
+                        href={`/pluie`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudMoonRain />
@@ -170,7 +170,7 @@ const SideBar = () => {
                   </li>
                   <li>
                      <a
-                        href={`/Niveau-de-CO2`}
+                        href={`/niveau-de-cO2`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudCog />
