@@ -17,7 +17,7 @@ export default function Home() {
          />
          <NavBar />
          <ScrollArea className="h-[100%]">
-            <div className="space-y-12">
+            <div className="space-y-8">
                <TemperaturePluie />
                <Temperature />
             </div>
