@@ -1,12 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import {
-   BarChart,
    XAxis,
    YAxis,
-   Bar,
    Tooltip,
-   Legend,
    ResponsiveContainer,
    AreaChart,
    Area,
@@ -58,20 +55,20 @@ const Temperature = () => {
          setData(newData);
       };
 
-      const intervalId = setInterval(generateNewData, 20000); // Toutes les 20 secondes
+      const intervalId = setInterval(generateNewData, 10000); // Toutes les 20 secondes
 
       return () => clearInterval(intervalId);
    }, [data]);
 
    return (
-      <div className="bg-white shadow-md w-full h-[50vh] p-2 rounded-sm space-y-3">
+      <div className="bg-white shadow-md w-full h-[60vh] p-2 rounded-sm space-y-3">
          <span className="my-2 text-center uppercase text-gray-500">
             Temperature
          </span>
          <ResponsiveContainer width="100%" height="100%">
             <AreaChart
                width={730}
-               // height={250}
+               height={270}
                data={data}
                margin={{ top: 5, right: 20, left: 0, bottom: 30 }}
             >
