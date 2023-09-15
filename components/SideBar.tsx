@@ -116,77 +116,77 @@ const SideBar = () => {
                      </Link>
                   </li>
                   <li>
-                     <Link
+                     <a
                         href={`/temperature`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <ThermometerSun />
                         <span className="ml-3">Temperature</span>
-                     </Link>
+                     </a>
                   </li>
                   <li>
-                     <Link
+                     <a
                         href={`/vent`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Wind />
                         <span className="ml-3">Vitesse du vent</span>
-                     </Link>
+                     </a>
                   </li>
                   <li>
-                     <Link
+                     <a
                         href={`/direction-vent`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Fan />
                         <span className="ml-3">Direction du vent</span>
-                     </Link>
+                     </a>
                   </li>
                   <li>
-                     <Link
+                     <a
                         href={`/sol`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Flower2 />
                         <span className="ml-3">Humidité du sol</span>
-                     </Link>
+                     </a>
                   </li>
                   <li>
-                     <Link
+                     <a
                         href={`/precipitation`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudRainWind />
                         <span className="ml-3">Précipitation</span>
-                     </Link>
+                     </a>
                   </li>
                   <li>
-                     <Link
+                     <a
                         href={`/pluie`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudMoonRain />
                         <span className="ml-3">Pluie</span>
-                     </Link>
+                     </a>
                   </li>
                   <li>
-                     <Link
+                     <a
                         href={`/niveau-de-cO2`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <CloudCog />
                         <span className="ml-3">Niveau de CO2</span>
-                     </Link>
+                     </a>
                   </li>
                   <hr className="bg-white border border-1 border-white" />
                   <li>
-                     <Link
+                     <a
                         href={`/Settings`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Settings />
                         <span className="ml-3">Settings</span>
-                     </Link>
+                     </a>
                   </li>
                </ul>
             </div>
