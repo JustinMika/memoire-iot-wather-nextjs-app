@@ -76,9 +76,11 @@ export default function DirectionVent() {
                      x1="50"
                      y1="50"
                      x2="50"
-                     y2="10"
-                     stroke="red"
-                     strokeWidth="2"
+                     y2="22"
+                     stroke="gray"
+                     stroke-width="1"
+                     markerEnd="url(#arrowhead)"
+                     style={{ fill: "green" }}
                      transform={`rotate(${arrowRotation} 50 50)`}
                   />
 
@@ -102,8 +104,23 @@ export default function DirectionVent() {
                      );
                   })}
 
+                  {/* Définition de la flèche */}
+                  <defs>
+                     <marker
+                        id="arrowhead"
+                        viewBox="0 0 10 10"
+                        refX="5"
+                        refY="5"
+                        markerWidth="4"
+                        markerHeight="6"
+                        orient="auto"
+                     >
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="gray" />
+                     </marker>
+                  </defs>
+
                   {/* Cercle intérieur */}
-                  <circle cx="50" cy="50" r="4" fill="gray" />
+                  <circle cx="50" cy="50" r="2" fill="gray" />
                </svg>
             </div>
          </div>
