@@ -2,7 +2,7 @@ data
 temperature
 windSpeed
 windDirection
-soilHumidity
+*soilHumidity
 precipitation
 co2Level
 rain

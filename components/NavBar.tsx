@@ -26,7 +26,7 @@ const NavBar = () => {
                      <AlignLeft />
                   </button>
                   <a href={`/`} className="flex md:mr-24">
-                     <Image src="/nuageux.png" width={30} height={20} alt="."/>
+                     <Image src="/nuageux.png" width={30} height={20} alt="." />
                      <span className="ml-2 self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white uppercase">
                         Meteo app
                      </span>
