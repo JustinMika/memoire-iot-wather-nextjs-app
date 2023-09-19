@@ -15,7 +15,7 @@ const NavBar = () => {
          <div className="px-3 py-3 lg:px-5 lg:pl-3">
             <div className="flex items-center justify-between">
                <div className="flex items-cente-r justify-start items-baseline">
-                  <button
+                  {/* <button
                      type="button"
                      className="inline-flex mr-2 items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                      onClick={() => {
@@ -24,7 +24,7 @@ const NavBar = () => {
                   >
                      <span className="sr-only">Open sidebar</span>
                      <AlignLeft />
-                  </button>
+                  </button> */}
                   <a href={`/`} className="flex md:mr-24">
                      <Image src="/nuageux.png" width={30} height={20} alt="." />
                      <span className="ml-2 self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white uppercase">

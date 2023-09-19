@@ -1,6 +1,5 @@
 "use client";
 import NavBar from "@/components/NavBar";
-// import Temperature from "@/components/statistic/Temperature";
 import { useEffect, useState } from "react";
 
 export default function DirectionVent() {
@@ -78,7 +77,7 @@ export default function DirectionVent() {
                      x2="50"
                      y2="22"
                      stroke="gray"
-                     stroke-width="1"
+                     strokeWidth="1"
                      markerEnd="url(#arrowhead)"
                      style={{ fill: "green" }}
                      transform={`rotate(${arrowRotation} 50 50)`}
