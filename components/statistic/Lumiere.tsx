@@ -29,7 +29,7 @@ const Lumiere = () => {
                console.log(response?.data?.rows);
             })
             .catch((error) => {
-               console.error("Error fetching posts:", error);
+               // console.error("Error fetching posts:", error);
             });
       };
 

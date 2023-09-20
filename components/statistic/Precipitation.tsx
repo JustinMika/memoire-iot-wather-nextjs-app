@@ -33,7 +33,7 @@ const Precipitation = () => {
             });
       };
 
-      const intervalId = setInterval(getData, 5000);
+      const intervalId = setInterval(getData, 3000);
 
       return () => clearInterval(intervalId);
    }, []);
@@ -51,7 +51,7 @@ const Precipitation = () => {
             });
       };
 
-      const intervalId2 = setInterval(generateNewData, 5000); // Toutes les 20 secondes
+      const intervalId2 = setInterval(generateNewData, 3000); // Toutes les 20 secondes
 
       return () => clearInterval(intervalId2);
    }, []);

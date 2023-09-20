@@ -18,9 +18,15 @@ interface DataItem {
 const Temperature = () => {
    const [data, setData] = useState([]);
 
-   const getRandomFloat = (min: number, max: number) => {
-      return (Math.random() * (max - min) + min).toFixed(1);
-   };
+   axios
+      .get("/api/v1/data")
+      .then((response: any) => {
+         // console.log(response?.data?.rows);
+         setData(response?.data?.rows);
+      })
+      .catch((error) => {
+         // console.error("Error fetching posts:", error);
+      });
 
    useEffect(() => {
       const getData = () => {
@@ -28,10 +34,9 @@ const Temperature = () => {
             .get("/api/v1/all-data")
             .then((response: any) => {
                console.log(response?.data?.rows);
-               setData(response?.data?.rows);
             })
             .catch((error) => {
-               console.error("Error fetching posts:", error);
+               // console.error("Error fetching posts:", error);
             });
       };
 
@@ -45,11 +50,11 @@ const Temperature = () => {
          axios
             .get("/api/v1/data")
             .then((response: any) => {
-               console.log(response?.data?.rows);
+               // console.log(response?.data?.rows);
                setData(response?.data?.rows);
             })
             .catch((error) => {
-               console.error("Error fetching posts:", error);
+               // console.error("Error fetching posts:", error);
             });
       };
 

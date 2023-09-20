@@ -12,6 +12,7 @@ export default authMiddleware({
       "/api/v1/direction-vent", // Dv
       "/api/v1/precipitation", // Viveau pluie
       "/api/v1/lumiere",
+      "/api/v1/prec-pluie",
    ],
 });
 

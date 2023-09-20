@@ -8,17 +8,6 @@ import { useEffect } from "react";
 import axios from "axios";
 
 export default function Home() {
-   useEffect(() => {
-      axios
-         .get("/api/v1/all-data")
-         .then((response) => {
-            console.log(response);
-         })
-         .catch((error) => {
-            console.error("Error fetching posts:", error);
-         });
-   }, []);
-
    return (
       <main className="p-0 h-[80vh] overflow-y-hidden">
          <NextNProgress
@@ -32,7 +21,6 @@ export default function Home() {
          <ScrollArea className="h-[100%]">
             <div className="space-y-8">
                <TemperaturePluie />
-               <Temperature />
             </div>
          </ScrollArea>
       </main>
