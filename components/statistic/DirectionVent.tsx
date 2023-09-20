@@ -1,6 +1,7 @@
 "use client";
 import NavBar from "@/components/NavBar";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function DirectionVent() {
    const [arrowRotation, setArrowRotation] = useState(0);
@@ -9,27 +10,66 @@ export default function DirectionVent() {
       const directions = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"];
 
       const intervalId = setInterval(() => {
+         axios
+            .get("/api/v1/all-data")
+            .then((response: any) => {
+               // console.log(response?.data?.rows);
+            })
+            .catch((error) => {});
+         let v;
+         let dir;
+         let d;
+         axios
+            .get("/api/v1/direction-vent")
+            .then((response: any) => {
+               console.log(response?.data);
+               if (response?.data) {
+                  v = response?.data;
+               } else {
+                  v = 0;
+               }
+               dir = v ?? 0;
+               d = dir?.rows ? parseInt(dir.rows) : 0;
+               console.log(d);
+               if (d > 0 && d <= 44) {
+                  setArrowRotation(0);
+               } else if (d > 44 && d < 89) {
+                  setArrowRotation(45);
+               } else if (d > 89 && d < 134) {
+                  setArrowRotation(90);
+               } else if (d > 134 && d < 179) {
+                  setArrowRotation(225);
+               } else if (d > 181 && d < 225) {
+                  setArrowRotation(270);
+               } else if (d > 225 && d < 316) {
+                  setArrowRotation(315);
+               } else {
+                  setArrowRotation(0);
+               }
+            })
+            .catch((error) => {});
+
          const randomDirection =
             directions[Math.floor(Math.random() * directions.length)];
          let newRotation = 0;
 
-         if (randomDirection === "N") {
-            setArrowRotation(0);
-         } else if (randomDirection === "NE") {
-            setArrowRotation(45);
-         } else if (randomDirection === "E") {
-            setArrowRotation(90);
-         } else if (randomDirection === "SE") {
-            setArrowRotation(135);
-         } else if (randomDirection === "S") {
-            setArrowRotation(180);
-         } else if (randomDirection === "SO") {
-            setArrowRotation(225);
-         } else if (randomDirection === "O") {
-            setArrowRotation(270);
-         } else if (randomDirection === "NO") {
-            setArrowRotation(315);
-         }
+         // if (randomDirection === "N") {
+         //    setArrowRotation(0);
+         // } else if (randomDirection === "NE") {
+         //    setArrowRotation(45);
+         // } else if (randomDirection === "E") {
+         //    setArrowRotation(90);
+         // } else if (randomDirection === "SE") {
+         //    setArrowRotation(135);
+         // } else if (randomDirection === "S") {
+         //    setArrowRotation(180);
+         // } else if (randomDirection === "SO") {
+         //    setArrowRotation(225);
+         // } else if (randomDirection === "O") {
+         //    setArrowRotation(270);
+         // } else if (randomDirection === "NO") {
+         //    setArrowRotation(315);
+         // }
       }, 3000);
 
       return () => clearInterval(intervalId);

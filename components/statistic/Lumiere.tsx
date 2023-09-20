@@ -18,7 +18,7 @@ interface DataItem {
    precipitation: number;
 }
 
-const Precipitation = () => {
+const Lumiere = () => {
    const [data, setData] = useState([]);
 
    useEffect(() => {
@@ -41,7 +41,7 @@ const Precipitation = () => {
    useEffect(() => {
       const generateNewData = () => {
          axios
-            .get("/api/v1/precipitation")
+            .get("/api/v1/lumiere")
             .then((response: any) => {
                console.log(response?.data?.rows);
                setData(response?.data?.rows);
@@ -59,7 +59,7 @@ const Precipitation = () => {
    return (
       <div className="bg-white shadow-md w-full h-[70vh] p-2 rounded-sm space-y-3">
          <span className="my-2 text-center uppercase text-gray-500">
-            Niveau du precipitation
+            Lumiere
          </span>
          <ResponsiveContainer width="100%" height="100%">
             <AreaChart
@@ -79,7 +79,7 @@ const Precipitation = () => {
                <Tooltip />
                <Area
                   type="monotone"
-                  dataKey="precipitation"
+                  dataKey="Lumiere"
                   stroke="#009"
                   fillOpacity={1}
                   fill="url(#colorPv)"
@@ -90,4 +90,4 @@ const Precipitation = () => {
    );
 };
 
-export default Precipitation;
+export default Lumiere;

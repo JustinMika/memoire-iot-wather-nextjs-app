@@ -8,57 +8,55 @@ import {
    AreaChart,
    Area,
 } from "recharts";
+import axios from "axios";
 
 interface DataItem {
-   Heure: string;
    Temperature: number;
+   Heure: string;
 }
 
 const Temperature = () => {
-   const [data, setData] = useState<DataItem[]>([
-      { Heure: "0H", Temperature: 0.0 },
-      { Heure: "1H", Temperature: 0.0 },
-      { Heure: "2H", Temperature: 0.0 },
-      { Heure: "3H", Temperature: 0.0 },
-      { Heure: "4H", Temperature: 0.0 },
-      { Heure: "5H", Temperature: 0.0 },
-      { Heure: "6H", Temperature: 0.0 },
-      { Heure: "7H", Temperature: 0.0 },
-      { Heure: "8H", Temperature: 0.0 },
-      { Heure: "9H", Temperature: 0.0 },
-      { Heure: "10H", Temperature: 0.0 },
-      { Heure: "11H", Temperature: 0.0 },
-      { Heure: "12H", Temperature: 0.0 },
-      { Heure: "13H", Temperature: 0.0 },
-      { Heure: "14H", Temperature: 0.0 },
-      { Heure: "15H", Temperature: 0.0 },
-      { Heure: "16H", Temperature: 0.0 },
-      { Heure: "17H", Temperature: 0.0 },
-      { Heure: "18H", Temperature: 0.0 },
-      { Heure: "19H", Temperature: 0.0 },
-      { Heure: "20H", Temperature: 0.0 },
-      { Heure: "21H", Temperature: 0.0 },
-      { Heure: "22H", Temperature: 0.0 },
-      { Heure: "23H", Temperature: 0.0 },
-   ]);
+   const [data, setData] = useState([]);
 
    const getRandomFloat = (min: number, max: number) => {
       return (Math.random() * (max - min) + min).toFixed(1);
    };
 
    useEffect(() => {
-      const generateNewData = () => {
-         const newData = data.map((item) => ({
-            ...item,
-            Temperature: parseFloat(getRandomFloat(8, 40)),
-         }));
-         setData(newData);
+      const getData = () => {
+         axios
+            .get("/api/v1/all-data")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+               setData(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
       };
 
-      const intervalId = setInterval(generateNewData, 10000); // Toutes les 20 secondes
+      const intervalId = setInterval(getData, 5000);
 
       return () => clearInterval(intervalId);
-   }, [data]);
+   }, []);
+
+   useEffect(() => {
+      const generateNewData = () => {
+         axios
+            .get("/api/v1/data")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+               setData(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
+      };
+
+      const intervalId2 = setInterval(generateNewData, 5000); // Toutes les 20 secondes
+
+      return () => clearInterval(intervalId2);
+   }, []);
 
    return (
       <div className="bg-white shadow-md w-full h-[60vh] p-2 rounded-sm space-y-3">
