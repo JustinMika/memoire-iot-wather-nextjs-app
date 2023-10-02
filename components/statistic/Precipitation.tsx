@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
    BarChart,
@@ -18,50 +19,42 @@ interface DataItem {
 }
 
 const Precipitation = () => {
-   const [data, setData] = useState<DataItem[]>([
-      { Heure: "", precipitation: 9.8 },
-      { Heure: "", precipitation: 15.2 },
-      { Heure: "", precipitation: 6.5 },
-      { Heure: "", precipitation: 0.3 },
-      { Heure: "", precipitation: 1.0 },
-      { Heure: "", precipitation: 7.7 },
-      { Heure: "", precipitation: 4.3 },
-      { Heure: "", precipitation: 3.8 },
-      { Heure: "", precipitation: 12.6 },
-      { Heure: "", precipitation: 0.7 },
-      { Heure: "", precipitation: 0.0 },
-      { Heure: "", precipitation: 8.9 },
-      { Heure: "", precipitation: 2.4 },
-      { Heure: "", precipitation: 0.0 },
-      { Heure: "", precipitation: 0.1 },
-      { Heure: "", precipitation: 11.3 },
-      { Heure: "", precipitation: 13.7 },
-      { Heure: "", precipitation: 6.8 },
-      { Heure: "", precipitation: 18.5 },
-      { Heure: "", precipitation: 0.5 },
-      { Heure: "", precipitation: 9.2 },
-      { Heure: "", precipitation: 5.9 },
-      { Heure: "", precipitation: 1.2 },
-      { Heure: "", precipitation: 0.8 },
-   ]);
+   const [data, setData] = useState([]);
 
-   const getRandomFloat = (min: number, max: number) => {
-      return (Math.random() * (max - min) + min).toFixed(1);
-   };
+   useEffect(() => {
+      const getData = () => {
+         axios
+            .get("/api/v1/all-data")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
+      };
+
+      const intervalId = setInterval(getData, 3000);
+
+      return () => clearInterval(intervalId);
+   }, []);
 
    useEffect(() => {
       const generateNewData = () => {
-         const newData = data.map((item) => ({
-            ...item,
-            precipitation: parseFloat(getRandomFloat(0, 20)),
-         }));
-         setData(newData);
+         axios
+            .get("/api/v1/precipitation")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+               setData(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
       };
 
-      const intervalId = setInterval(generateNewData, 20000); // Toutes les 20 secondes
+      const intervalId2 = setInterval(generateNewData, 3000); // Toutes les 20 secondes
 
-      return () => clearInterval(intervalId);
-   }, [data]);
+      return () => clearInterval(intervalId2);
+   }, []);
 
    return (
       <div className="bg-white shadow-md w-full h-[70vh] p-2 rounded-sm space-y-3">

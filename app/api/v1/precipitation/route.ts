@@ -1,18 +1,15 @@
-import axios from "axios";
 import { NextRequest, NextResponse as res } from "next/server";
+import connection from "@/config/databases";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
    try {
-      const d = await axios.get("http://localhost:2000/precipitation");
-      const data = d.data;
-      return res.json({ data });
+      const [rows] = await connection.query(
+         `SELECT Np as precipitation, CONCAT(HOUR(created_at), ':', MINUTE(created_at), ':', SECOND(created_at)) AS Heure FROM data_meteos`
+      );
+      return res.json({ rows });
    } catch (error) {
       return res.json({
          error: error,
       });
    }
-}
-
-export async function POST(req: NextRequest) {
-   res.json(req.body);
 }

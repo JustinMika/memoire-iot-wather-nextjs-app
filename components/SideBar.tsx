@@ -45,13 +45,23 @@ const SideBar = () => {
                         <span className="ml-3">Temperature</span>
                      </a>
                   </li>
-                  <li>
+                  {/* <li>
                      <a
                         href={`/vent`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                      >
                         <Wind />
                         <span className="ml-3">Vitesse du vent</span>
+                     </a>
+                  </li> */}
+
+                  <li>
+                     <a
+                        href={`/lumiere`}
+                        className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                     >
+                        <Wind />
+                        <span className="ml-3">Lumieres</span>
                      </a>
                   </li>
                   <li>
@@ -81,7 +91,7 @@ const SideBar = () => {
                         <span className="ml-3">Précipitation</span>
                      </a>
                   </li>
-                  <li>
+                  {/* <li>
                      <a
                         href={`/pluie`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -89,8 +99,8 @@ const SideBar = () => {
                         <CloudMoonRain />
                         <span className="ml-3">Pluie</span>
                      </a>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                      <a
                         href={`/niveau-de-cO2`}
                         className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -98,7 +108,7 @@ const SideBar = () => {
                         <CloudCog />
                         <span className="ml-3">Niveau de CO2</span>
                      </a>
-                  </li>
+                  </li> */}
                   <hr className="bg-gray-300 border border-1 border-gray-300" />
                   <li>
                      <a

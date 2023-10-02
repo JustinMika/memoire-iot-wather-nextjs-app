@@ -11,6 +11,7 @@ import {
    AreaChart,
    Area,
 } from "recharts";
+import axios from "axios";
 
 interface DataItem {
    Heure: string;
@@ -19,61 +20,52 @@ interface DataItem {
 }
 
 const TemperaturePluie = () => {
-   const [data, setData] = useState<DataItem[]>([
-      { Heure: "0h", Temperature: 32.5, Pluie: 9.8 },
-      { Heure: "1h", Temperature: 23.1, Pluie: 15.2 },
-      { Heure: "2h", Temperature: 18.7, Pluie: 6.5 },
-      { Heure: "3h", Temperature: 12.8, Pluie: 0.3 },
-      { Heure: "4h", Temperature: 27.4, Pluie: 1.0 },
-      { Heure: "5h", Temperature: 14.6, Pluie: 7.7 },
-      { Heure: "6h", Temperature: 31.2, Pluie: 4.3 },
-      { Heure: "7h", Temperature: 19.8, Pluie: 3.8 },
-      { Heure: "8h", Temperature: 22.7, Pluie: 12.6 },
-      { Heure: "9h", Temperature: 29.3, Pluie: 0.7 },
-      { Heure: "10h", Temperature: 36.9, Pluie: 0.0 },
-      { Heure: "11h", Temperature: 33.4, Pluie: 8.9 },
-      { Heure: "12h", Temperature: 26.5, Pluie: 2.4 },
-      { Heure: "13h", Temperature: 14.9, Pluie: 0.0 },
-      { Heure: "14h", Temperature: 37.8, Pluie: 0.1 },
-      { Heure: "15h", Temperature: 20.2, Pluie: 11.3 },
-      { Heure: "16h", Temperature: 28.7, Pluie: 13.7 },
-      { Heure: "17h", Temperature: 38.6, Pluie: 6.8 },
-      { Heure: "18h", Temperature: 15.3, Pluie: 18.5 },
-      { Heure: "19h", Temperature: 26.8, Pluie: 0.5 },
-      { Heure: "20h", Temperature: 31.1, Pluie: 9.2 },
-      { Heure: "21h", Temperature: 17.6, Pluie: 5.9 },
-      { Heure: "22h", Temperature: 39.2, Pluie: 1.2 },
-      { Heure: "23h", Temperature: 20.8, Pluie: 0.8 },
-   ]);
+   const [data, setData] = useState([]);
 
-   const getRandomFloat = (min: number, max: number) => {
-      return (Math.random() * (max - min) + min).toFixed(1);
-   };
+   useEffect(() => {
+      const getData = () => {
+         axios
+            .get("/api/v1/all-data")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
+      };
+
+      const intervalId = setInterval(getData, 3000);
+
+      return () => clearInterval(intervalId);
+   }, []);
 
    useEffect(() => {
       const generateNewData = () => {
-         const newData = data.map((item) => ({
-            ...item,
-            Temperature: parseFloat(getRandomFloat(8, 40)),
-            Pluie: parseFloat(getRandomFloat(0, 20)),
-         }));
-         setData(newData);
+         axios
+            .get("/api/v1/prec-pluie")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+               setData(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
       };
 
-      const intervalId = setInterval(generateNewData, 20000); // Toutes les 20 secondes
+      const intervalId2 = setInterval(generateNewData, 3000); // Toutes les 20 secondes
 
-      return () => clearInterval(intervalId);
-   }, [data]);
+      return () => clearInterval(intervalId2);
+   }, []);
 
    return (
-      <div className="bg-white w-full h-[50vh] p-2 rounded-sm space-y-3 shadow-md">
+      <div className="bg-white w-full h-[70vh] p-2 rounded-sm space-y-3 shadow-md">
          <span className="my-2 text-center uppercase text-gray-500">
-            Temperature Ambiante & Pluie
+            Temperature Ambiante & precipitation
          </span>
          <ResponsiveContainer width="100%" height="100%">
             <AreaChart
                width={730}
-               // height={250}
+               height={280}
                data={data}
                margin={{ top: 10, right: 10, left: 0, bottom: 30 }}
             >
@@ -99,7 +91,7 @@ const TemperaturePluie = () => {
                />
                <Area
                   type="monotone"
-                  dataKey="Pluie"
+                  dataKey="precipitation"
                   stroke="#82ca9d"
                   fillOpacity={1}
                   fill="url(#colorPv)"

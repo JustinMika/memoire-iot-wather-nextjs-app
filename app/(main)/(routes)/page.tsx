@@ -4,6 +4,8 @@ import Temperature from "@/components/statistic/Temperature";
 import TemperaturePluie from "@/components/statistic/TemperaturePluie";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import NextNProgress from "nextjs-progressbar";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function Home() {
    return (
@@ -19,7 +21,6 @@ export default function Home() {
          <ScrollArea className="h-[100%]">
             <div className="space-y-8">
                <TemperaturePluie />
-               <Temperature />
             </div>
          </ScrollArea>
       </main>

@@ -11,57 +11,46 @@ import {
    AreaChart,
    Area,
 } from "recharts";
-
-interface DataItem {
-   Heure: string;
-   humidite: number;
-}
+import axios from "axios";
 
 const Sol = () => {
-   const [data, setData] = useState<DataItem[]>([
-      { Heure: "", humidite: 9.8 },
-      { Heure: "", humidite: 15.2 },
-      { Heure: "", humidite: 6.5 },
-      { Heure: "", humidite: 0.3 },
-      { Heure: "", humidite: 1.0 },
-      { Heure: "", humidite: 7.7 },
-      { Heure: "", humidite: 4.3 },
-      { Heure: "", humidite: 3.8 },
-      { Heure: "", humidite: 12.6 },
-      { Heure: "", humidite: 0.7 },
-      { Heure: "", humidite: 0.0 },
-      { Heure: "", humidite: 8.9 },
-      { Heure: "", humidite: 2.4 },
-      { Heure: "", humidite: 0.0 },
-      { Heure: "", humidite: 0.1 },
-      { Heure: "", humidite: 11.3 },
-      { Heure: "", humidite: 13.7 },
-      { Heure: "", humidite: 6.8 },
-      { Heure: "", humidite: 18.5 },
-      { Heure: "", humidite: 0.5 },
-      { Heure: "", humidite: 9.2 },
-      { Heure: "", humidite: 5.9 },
-      { Heure: "", humidite: 1.2 },
-      { Heure: "", humidite: 0.8 },
-   ]);
+   const [data, setData] = useState();
 
-   const getRandomFloat = (min: number, max: number) => {
-      return (Math.random() * (max - min) + min).toFixed(1);
-   };
+   useEffect(() => {
+      const getData = () => {
+         axios
+            .get("/api/v1/all-data")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+               // setData(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
+      };
+
+      const intervalId = setInterval(getData, 5000);
+
+      return () => clearInterval(intervalId);
+   }, []);
 
    useEffect(() => {
       const generateNewData = () => {
-         const newData = data.map((item) => ({
-            ...item,
-            humidite: parseFloat(getRandomFloat(0, 20)),
-         }));
-         setData(newData);
+         axios
+            .get("/api/v1/humidite")
+            .then((response: any) => {
+               console.log(response?.data?.rows);
+               setData(response?.data?.rows);
+            })
+            .catch((error) => {
+               console.error("Error fetching posts:", error);
+            });
       };
 
-      const intervalId = setInterval(generateNewData, 20000); // Toutes les 20 secondes
+      const intervalId2 = setInterval(generateNewData, 5000); // Toutes les 20 secondes
 
-      return () => clearInterval(intervalId);
-   }, [data]);
+      return () => clearInterval(intervalId2);
+   }, []);
 
    return (
       <div className="bg-white shadow-md w-full h-[70vh] p-2 rounded-sm space-y-3">
